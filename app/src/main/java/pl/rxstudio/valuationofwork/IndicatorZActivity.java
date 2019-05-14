@@ -1,5 +1,5 @@
 package pl.rxstudio.valuationofwork;
-
+//TODO: add to not selected objects on start (radioButtons)
 
 import android.content.res.ColorStateList;
 import android.support.v7.app.AppCompatActivity;
@@ -152,7 +152,8 @@ public class IndicatorZActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 view.setSelected(true);
                 objectChoosed = position;
-                //indicatorListSelected = dbHelperSelected.getCategoryIndicators(listView.get.toString());
+                indicatorListSelected = dbHelperSelected.getCategoryIndicators(listView.getItemAtPosition(position).toString());
+
 
                 String category = getCategoryList()[0];
 
