@@ -119,18 +119,63 @@ public class IndicatorDbHelper extends SQLiteOpenHelper {
                 "kawiarnie, herbaciarnie, bary, puby ",
                 "kantyny, stołówki, jadłodajnie",
                 "restauracje", //Handel i usługi
-                "przedszkola","szkoły podstawowe z częścią żywieniową lub/i z zapleczem sportowym","gimnazja, licea","szkoły zawodowe (z warsztatami i/lub laboratoriami)","internaty bez części żywieniowej i sportowej","internaty z częścią żywieniową lub/i sportową",//Oświata
-                "obiekty wydziałów wyższych uczelni bez laboratoriów; administracja wyższych uczelni","obiekty wydziałów wyższych uczelni z laboratoriami","instytuty naukowe (z laboratoriami)","laboratoria naukowe","hotele asystenckie, akademiki","akademiki z zapleczem żywieniowym i rekreacyjnym",//Nauka
-                "noclegownie","żłobki","domy dziecka","przychodnie zdrowia","budynki centrów medycznych z zapleczem diagnostycznym","domy spokojnej starości","hospicja","budynki ośrodków rehabilitacyjnych","domy uzdrowiskowe z zapleczem rehabilitacyjnym","oddziały zabiegowe szpitali","kliniki",//Zdrowie i opieka społeczna
-                "świetlice","kluby mieszkańsców","dyskoteki","kina (1-2 sale dla ok. 200 osób lub mniejsze)","multikina","teatry o ograniczonej technologii, cyrki stałe","teatry, opery, operetki","filharmonie, sale koncertowe","sale i pawilony wystawowe, galerie","muzea – pawilony muzealne","muzea o najwyższym standardzie","sale wielofunkcyjne","sale kongresowe","centra kongresowe","biblioteki bez zaplecza konserwacji zbiorów, magazynów zwartych (np. małe miejskie lub gminne – ok.100.000 woluminów i mniejsze","biblioteki o pełnym programie",//Kultura
-                "kaplice","kościoły; synagogi","kościoły; synagogi o najwyższych wymaganiach co do wykończenia i wyposażenia","plebanie","budynki klasztorów (cz. mieszkalna, refektarz, kuchnia, kaplica, zaplecze sportowo - rekreacyjne)",//Obiekty kultu religijnego
-                "","","","","","","","","","","","","",//Sport i rekreacja
-                "","","","","","","","",//Hotele i turystyka
-                "","","","","","",//Rolnicze
-                "","","","","","","","","","","","",//Komunikacja
-                "","","","","","","","","","","","",//Przemysł i magazyny
-                "","","","",//Militarne i obrony cywilnej
-                "","","",""//Inne
+
+                "przedszkola","szkoły podstawowe z częścią żywieniową lub/i z zapleczem sportowym",
+                "gimnazja, licea","szkoły zawodowe (z warsztatami i/lub laboratoriami)",
+                "internaty bez części żywieniowej i sportowej","internaty z częścią żywieniową lub/i sportową",//Oświata
+
+                "obiekty wydziałów wyższych uczelni bez laboratoriów; administracja wyższych uczelni",
+                "obiekty wydziałów wyższych uczelni z laboratoriami","instytuty naukowe (z laboratoriami)",
+                "laboratoria naukowe","hotele asystenckie, akademiki","akademiki z zapleczem żywieniowym i rekreacyjnym",//Nauka
+
+                "noclegownie","żłobki","domy dziecka","przychodnie zdrowia",
+                "budynki centrów medycznych z zapleczem diagnostycznym","domy spokojnej starości",
+                "hospicja","budynki ośrodków rehabilitacyjnych","domy uzdrowiskowe z zapleczem rehabilitacyjnym",
+                "oddziały zabiegowe szpitali","kliniki",//Zdrowie i opieka
+
+                "świetlice","kluby mieszkańsców","dyskoteki","kina (1-2 sale dla ok. 200 osób lub mniejsze)",
+                "multikina","teatry o ograniczonej technologii, cyrki stałe",
+                "teatry, opery, operetki","filharmonie, sale koncertowe","sale i pawilony wystawowe, galerie",
+                "muzea – pawilony muzealne","muzea o najwyższym standardzie","sale wielofunkcyjne",
+                "sale kongresowe","centra kongresowe",
+                "biblioteki bez zaplecza konserwacji zbiorów, magazynów zwartych (np. małe miejskie lub gminne – ok.100.000 woluminów i mniejsze",
+                "biblioteki o pełnym programie",//Kultura
+
+                "kaplice","kościoły; synagogi","kościoły; synagogi o najwyższych wymaganiach co do wykończenia i wyposażenia",
+                "plebanie","budynki klasztorów (cz. mieszkalna, refektarz, kuchnia, kaplica, zaplecze sportowo - rekreacyjne)",//Obiekty kultu religijnego
+
+                "wiaty (np. na sprzęt pływający)","magazyny sprzętu sportowego","hangary na łodzie",
+                "domki campingowe letnie (bez łazienek)","przebieralnie",
+                "pawilony – szatnie, umywalnie i toalety","domki wypoczynkowe (z toaletami i łazienkami)",
+                "sale gimnastyczne i sportowe dla gier zespołowych (koszykówka, siatkówka, piłka ręczna itp)",
+                "hale sportowe (np. lekkoatletyczne)","pływalnie kryte","lodowiska kryte",
+                "wielofunkcyjne budynki sportowe (hala + pływalnia + lodowisko itp.)",
+                "zespoły odnowy biologicznej (basen, jacuzzi, sauna, masaż itp.)",//Sport i rekreacja
+
+                "schroniska","hotele młodzieżowe, hotele turystyczne","hotele pracownicze, asystenckie",
+                "motele","hotele niższych kategorii (nie więcej niż **), pensjonaty","hotele***",
+                "hotele**** i *****","domy wczasowe (pełne zaplecze rekreacyjne, żywieniowe)",//Hotele i turystyka
+
+                "proste budynki gospodarcze","szopy, stodoły","stajnie","chlewnie","szklarnie","kliniki weterynaryjne\n",//Rolnicze
+
+                "jednokondygnacyjne garaże wolnostojące i boksy","wielostanowiskowe garaże jednokondygnacjowe naziemne (bez ścian)",
+                "wielostanowiskowe garaże nadziemne zamknięte","garaże podziemne",
+                "stacje obsługi pojazdów","stacje paliw","stacje paliw z usługami (sklep, kawiarnia, restauracja)",
+                "bazy sprzetowo-transportowe ","budynki dworców autobusowych","budynki stacji kolejowych ",
+                "budynki dworców kolejowych","budynki pasażerskich dworców lotniczych",//Komunikacja
+
+                "proste budynki przemysłowe, magazynowe, warsztatowe","skomplikowane budynki magazynowe, wielokondygnacyjne",
+                "kotłownie","chłodnie, mroźnie","spalarnie śmieci; zakłady utylizacji odpadów",
+                "pralnie przemysłowe","obiekty przemysłu maszynowego, przetwórczego, spożywczego",
+                "obiekty przemysłu poligraficznego","obiekty przemysłowe zagrożone wybuchem, promieniowaniem jonizującym itp",
+                "obiekty przemysłu farmaceutycznego, chemicznego",
+                "obiekty przemysłowe unikalne, techniki jądrowej, clean-roomy itp., o najwyższych wymaganiach technologicznych i wykończeniowych",
+                "laboratoria i ośrodki badawcze dla przemysłu",//Przemysł i magazyny
+
+                "koszary bez części żywieniowej i sportowej","koszary z częścią żywieniową lub/i sportową;",
+                "schrony","schrony umożliwiające wielodniowe przetrwanie",//Militarne i obrony cywilnej
+
+                "proste budynki gospodarcze","baraki","wiaty","krematoria"//Inne
         };
 
         Integer[] category = new Integer[]{23,35,46,46,67,46,34,45,56,67,23,34,56, //Mieszkalne

@@ -1,5 +1,6 @@
 package pl.rxstudio.valuationofwork;
 //TODO: add to not selected objects on start (radioButtons)
+//TODO: add program to service editText when 7th option is set
 
 import android.content.res.ColorStateList;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import android.view.KeyEvent;
 import android.view.View;
 
 import android.widget.AdapterView;
@@ -99,8 +101,8 @@ public class IndicatorZActivity extends AppCompatActivity {
 
         textViewZ = findViewById(R.id.textViewZ);
         editText = findViewById(R.id.editText);
-        listView  = (ListView) findViewById(R.id.listView);
-        listView =findViewById(R.id.listView);
+        listView  = findViewById(R.id.listView);
+        listView = findViewById(R.id.listView);
         IndicatorDbHelper dbHelper = new IndicatorDbHelper(this);
         final IndicatorDbHelper dbHelperSelected = new IndicatorDbHelper(this);
 
@@ -117,9 +119,7 @@ public class IndicatorZActivity extends AppCompatActivity {
         Log.i("Selected list: ", Integer.toString(indicatorListSelected.size()));
         Log.i("Grouped list: ", Integer.toString(indicatorListGrouped.size()));
 
-
-        final Spinner spinnerGroup = (Spinner)findViewById(R.id.spinnerFunctionalGroup);
-        final Spinner spinnerObjects = (Spinner)findViewById(R.id.spinnerObject);
+        final Spinner spinnerGroup = findViewById(R.id.spinnerFunctionalGroup);
 
 
         ArrayAdapter adapterGroup = new ArrayAdapter(this, android.R.layout.simple_spinner_item, getGroupList());
@@ -131,12 +131,6 @@ public class IndicatorZActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 categoryChoosed = id+1;
                 indicatorListSelected = dbHelperSelected.getGroupIndicators(spinnerGroup.getSelectedItem().toString());
-             //   ArrayAdapter adapterObject = new ArrayAdapter(IndicatorZActivity.this, android.R.layout.simple_spinner_item, getObjectList());
-
-
-
-
-
                 ArrayAdapter listAdapter = new ArrayAdapter(IndicatorZActivity.this, android.R.layout.simple_list_item_1, getObjectList());
                 listView.setAdapter(listAdapter);
             }
@@ -153,43 +147,23 @@ public class IndicatorZActivity extends AppCompatActivity {
                 view.setSelected(true);
                 objectChoosed = position;
                 indicatorListSelected = dbHelperSelected.getCategoryIndicators(listView.getItemAtPosition(position).toString());
-
-
                 String category = getCategoryList()[0];
-
                 textView.setText(category);
 
                 setRadio(category, view);
-
             }
         });
 
-
-        spinnerObjects.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        textView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                objectChoosed = position;
-                indicatorListSelected = dbHelperSelected.getCategoryIndicators(spinnerObjects.getSelectedItem().toString());
-
-                String category = getCategoryList()[0];
-
-                textView.setText(category);
-
-                setRadio(category, view);
-
-
-
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                Log.i("Hello", "Hello");
+                return false;
             }
         });
-
 
     }
+
     private void setRadio(String category, View view) {
 
         int charAtZero = Character.getNumericValue(category.charAt(0));
@@ -248,17 +222,10 @@ public class IndicatorZActivity extends AppCompatActivity {
                     break;
                 case 7:
                     radioButton7.setEnabled(true);
-
                     break;
             }
-
-
         }
-
-        //getValuesOfZ(view);
-
     }
-
 
     private void setRadioOff() {
         radioButton1.setEnabled(false);
@@ -298,7 +265,6 @@ public class IndicatorZActivity extends AppCompatActivity {
         return groupList;
     }
 
-
     private String[] getCategoryList() {
         String[] groupList = new String[indicatorListSelected.size()];
 
@@ -325,7 +291,6 @@ public class IndicatorZActivity extends AppCompatActivity {
                    zIndicator = 0.4;
                    textViewZ.setText(Double.toString(zIndicator));
                    break;
-
             case R.id.radioButton2:
                 if(checked)
                     setRadioUncheck();
@@ -369,7 +334,6 @@ public class IndicatorZActivity extends AppCompatActivity {
                 editText.setText(Double.toString(zIndicator));
                 textViewZ.setText(Double.toString(zIndicator));
                 editText.setVisibility(View.VISIBLE);
-
                 break;
         }
     }

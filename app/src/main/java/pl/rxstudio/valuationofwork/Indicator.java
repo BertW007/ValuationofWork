@@ -5,6 +5,7 @@ public class Indicator {
     private String indicatorObjects;
     private int  indicatorCategory;
 
+
     public  Indicator() {}
 
     public Indicator(String indicatorObjectsGroups, String indicatorObjects, int indicatorCategory) {

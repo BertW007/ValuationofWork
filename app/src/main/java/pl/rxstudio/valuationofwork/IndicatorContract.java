@@ -12,6 +12,11 @@ public final class IndicatorContract {
         public static final String COLUMN_OBJECTS = "objects";
         public static final String COLUMN_CATEGORY = "category";
     }
+    public class IndicatorZValue {
+        public String indicatorZ = "0";
+
+    }
+
 
     static String[] wybKatTyp = {"dalne",
             "Bdra",
