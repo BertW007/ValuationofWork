@@ -177,47 +177,47 @@ public class IndicatorZActivity extends AppCompatActivity {
                 case 1:
                     radioButton1.setEnabled(true);
                     radioButton1.setChecked(true);
-                    zIndicator = 0.4;
-                    textViewZ.setText(Double.toString(zIndicator));
+                    Indicator.indicatorZ = 0.4;
+                    textViewZ.setText(Double.toString(Indicator.indicatorZ));
                     break;
                 case 2:
                     radioButton2.setEnabled(true);
                     if (radioButton1.isChecked()==false) {
                         radioButton2.setChecked(true);
-                        zIndicator = 0.7;
-                        textViewZ.setText(Double.toString(zIndicator));
+                        Indicator.indicatorZ = 0.7;
+                        textViewZ.setText(Double.toString(Indicator.indicatorZ));
                     }
                     break;
                 case 3:
                     radioButton3.setEnabled(true);
                     if (radioButton2.isChecked()==false&& radioButton1.isChecked()==false) {
                         radioButton3.setChecked(true);
-                        zIndicator = 1.0;
-                        textViewZ.setText(Double.toString(zIndicator));
+                        Indicator.indicatorZ = 1.0;
+                        textViewZ.setText(Double.toString(Indicator.indicatorZ));
                     }
                     break;
                 case 4:
                     radioButton4.setEnabled(true);
                     if (radioButton3.isChecked()==false&& radioButton2.isChecked()==false) {
                         radioButton4.setChecked(true);
-                        zIndicator = 1.4;
-                        textViewZ.setText(Double.toString(zIndicator));
+                        Indicator.indicatorZ = 1.4;
+                        textViewZ.setText(Double.toString(Indicator.indicatorZ));
                     }
                     break;
                 case 5:
                     radioButton5.setEnabled(true);
                     if (radioButton4.isChecked()==false&& radioButton3.isChecked()==false) {
                         radioButton5.setChecked(true);
-                        zIndicator = 1.8;
-                        textViewZ.setText(Double.toString(zIndicator));
+                        Indicator.indicatorZ = 1.8;
+                        textViewZ.setText(Double.toString(Indicator.indicatorZ));
                     }
                     break;
                 case 6:
                     radioButton6.setEnabled(true);
                     if (radioButton5.isChecked()==false && radioButton4.isChecked()==false ) {
                         radioButton6.setChecked(true);
-                        zIndicator = 2.5;
-                        textViewZ.setText(Double.toString(zIndicator));
+                        Indicator.indicatorZ = 2.5;
+                        textViewZ.setText(Double.toString(Indicator.indicatorZ));
                     }
                     break;
                 case 7:
@@ -288,51 +288,51 @@ public class IndicatorZActivity extends AppCompatActivity {
                 if(checked)
                    setRadioUncheck();
                    radioButton1.setChecked(true);
-                   zIndicator = 0.4;
-                   textViewZ.setText(Double.toString(zIndicator));
+                Indicator.indicatorZ = 0.4;
+                   textViewZ.setText(Double.toString(Indicator.indicatorZ));
                    break;
             case R.id.radioButton2:
                 if(checked)
                     setRadioUncheck();
-                zIndicator = 0.7;
-                textViewZ.setText(Double.toString(zIndicator));
+                Indicator.indicatorZ = 0.7;
+                textViewZ.setText(Double.toString(Indicator.indicatorZ));
                 radioButton2.setChecked(true);
                 break;
             case R.id.radioButton3:
                 if(checked)
                     setRadioUncheck();
-                zIndicator = 1.0;
-                textViewZ.setText(Double.toString(zIndicator));
+                Indicator.indicatorZ = 1.0;
+                textViewZ.setText(Double.toString(Indicator.indicatorZ));
                 radioButton3.setChecked(true);
                 break;
             case R.id.radioButton4:
                 if(checked)
                     setRadioUncheck();
-                zIndicator = 1.4;
-                textViewZ.setText(Double.toString(zIndicator));
+                Indicator.indicatorZ = 1.4;
+                textViewZ.setText(Double.toString(Indicator.indicatorZ));
                 radioButton4.setChecked(true);
                 break;
             case R.id.radioButton5:
                 if(checked)
                     setRadioUncheck();
-                zIndicator = 1.8;
-                textViewZ.setText(Double.toString(zIndicator));
+                Indicator.indicatorZ = 1.8;
+                textViewZ.setText(Double.toString(Indicator.indicatorZ));
                 radioButton5.setChecked(true);
                 break;
             case R.id.radioButton6:
                 if(checked)
                     setRadioUncheck();
-                zIndicator = 2.5;
-                textViewZ.setText(Double.toString(zIndicator));
+                Indicator.indicatorZ = 2.5;
+                textViewZ.setText(Double.toString(Indicator.indicatorZ));
                 radioButton6.setChecked(true);
                 break;
             case R.id.radioButton7:
                 if(checked)
                     setRadioUncheck();
                 radioButton7.setChecked(true);
-                zIndicator = 0.0;
-                editText.setText(Double.toString(zIndicator));
-                textViewZ.setText(Double.toString(zIndicator));
+                Indicator.indicatorZ = 0.0;
+                editText.setText(Double.toString(Indicator.indicatorZ));
+                textViewZ.setText(Double.toString(Indicator.indicatorZ));
                 editText.setVisibility(View.VISIBLE);
                 break;
         }

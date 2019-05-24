@@ -6,6 +6,7 @@ public final class IndicatorContract {
 
     private IndicatorContract() {}
 
+
     public static class IndicatorZTable implements BaseColumns {
         public static final String TABLE_NAME = "indicatorZCategories";
         public static final String COLUMN_FUNCTIONAL_GROUPS = "functionalGroups";

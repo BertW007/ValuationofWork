@@ -48,12 +48,12 @@
         android:textAlignment="viewStart"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/editMGUS"
-        app:layout_constraintEnd_toEndOf="@+id/editPWB"
+        app:layout_constraintEnd_toEndOf="@+id/etitTextInterlnalArea"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editPWB" />
+        app:layout_constraintStart_toStartOf="@+id/etitTextInterlnalArea" />
 
     <EditText
-        android:id="@+id/editPWB"
+        android:id="@+id/etitTextInterlnalArea"
         android:layout_width="348dp"
         android:layout_height="40dp"
         android:ems="10"
