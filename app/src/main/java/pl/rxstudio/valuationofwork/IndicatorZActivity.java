@@ -5,7 +5,7 @@ package pl.rxstudio.valuationofwork;
 import android.content.res.ColorStateList;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
+
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
@@ -101,7 +101,7 @@ public class IndicatorZActivity extends AppCompatActivity {
 
         textViewZ = findViewById(R.id.textViewZ);
         editText = findViewById(R.id.editText);
-        listView  = findViewById(R.id.listView);
+
         listView = findViewById(R.id.listView);
         IndicatorDbHelper dbHelper = new IndicatorDbHelper(this);
         final IndicatorDbHelper dbHelperSelected = new IndicatorDbHelper(this);
@@ -115,12 +115,11 @@ public class IndicatorZActivity extends AppCompatActivity {
         indicatorCountTotal = indicatorList.size();
         indicatorCountGroup = indicatorListSelected.size();
 
-        Log.i("All list: ", Integer.toString(indicatorCountTotal));
-        Log.i("Selected list: ", Integer.toString(indicatorListSelected.size()));
-        Log.i("Grouped list: ", Integer.toString(indicatorListGrouped.size()));
+//        Log.i("All list: ", Integer.toString(indicatorCountTotal));
+//        Log.i("Selected list: ", Integer.toString(indicatorListSelected.size()));
+//        Log.i("Grouped list: ", Integer.toString(indicatorListGrouped.size()));
 
         final Spinner spinnerGroup = findViewById(R.id.spinnerFunctionalGroup);
-
 
         ArrayAdapter adapterGroup = new ArrayAdapter(this, android.R.layout.simple_spinner_item, getGroupList());
 
@@ -181,6 +180,7 @@ public class IndicatorZActivity extends AppCompatActivity {
                     textViewZ.setText(Double.toString(Indicator.indicatorZ));
                     break;
                 case 2:
+
                     radioButton2.setEnabled(true);
                     if (radioButton1.isChecked()==false) {
                         radioButton2.setChecked(true);
@@ -189,6 +189,7 @@ public class IndicatorZActivity extends AppCompatActivity {
                     }
                     break;
                 case 3:
+
                     radioButton3.setEnabled(true);
                     if (radioButton2.isChecked()==false&& radioButton1.isChecked()==false) {
                         radioButton3.setChecked(true);
@@ -197,6 +198,7 @@ public class IndicatorZActivity extends AppCompatActivity {
                     }
                     break;
                 case 4:
+
                     radioButton4.setEnabled(true);
                     if (radioButton3.isChecked()==false&& radioButton2.isChecked()==false) {
                         radioButton4.setChecked(true);
@@ -205,6 +207,7 @@ public class IndicatorZActivity extends AppCompatActivity {
                     }
                     break;
                 case 5:
+
                     radioButton5.setEnabled(true);
                     if (radioButton4.isChecked()==false&& radioButton3.isChecked()==false) {
                         radioButton5.setChecked(true);
@@ -213,6 +216,7 @@ public class IndicatorZActivity extends AppCompatActivity {
                     }
                     break;
                 case 6:
+
                     radioButton6.setEnabled(true);
                     if (radioButton5.isChecked()==false && radioButton4.isChecked()==false ) {
                         radioButton6.setChecked(true);
@@ -222,9 +226,32 @@ public class IndicatorZActivity extends AppCompatActivity {
                     break;
                 case 7:
                     radioButton7.setEnabled(true);
+
                     break;
             }
         }
+       setValueKat();
+    }
+
+
+    private void setValueKat() {
+        if(radioButton1.isChecked()){
+        Indicator.valueKat = 1;}
+        if(radioButton2.isChecked()){
+            Indicator.valueKat = 2;}
+        if(radioButton3.isChecked()){
+            Indicator.valueKat = 3;}
+        if(radioButton4.isChecked()){
+            Indicator.valueKat = 4;}
+        if(radioButton5.isChecked()){
+            Indicator.valueKat = 5;}
+        if(radioButton6.isChecked()){
+            Indicator.valueKat = 6;}
+        if(radioButton7.isChecked()){
+            Indicator.valueKat = 7;}
+
+
+
     }
 
     private void setRadioOff() {
@@ -277,6 +304,7 @@ public class IndicatorZActivity extends AppCompatActivity {
 
     public void onRadioButtonClicked(View v) {
         getValuesOfZ(v);
+        setValueKat();
     }
     public void getValuesOfZ(View v) {
         // Is the current Radio Button checked?

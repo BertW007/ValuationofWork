@@ -12,7 +12,7 @@ import java.util.List;
 import pl.rxstudio.valuationofwork.IndicatorContract.*;
 
 public class IndicatorDbHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "indicatoresy.db";
+    private static final String DATABASE_NAME = "indicatoresysk.db";
     private static final int DATABASE_VERSION = 1;
 
     private SQLiteDatabase db;
@@ -35,13 +35,63 @@ public class IndicatorDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_INDICATOR_TABLE);
         fillIndicatorsTable();
 
+        final String SQL_CREATE_CATEGORY_PZT_TABLE = "CREATE TABLE " +
+                CategoryTablePZT.TABLE_NAME  + " ( " +
+                CategoryTablePZT._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                CategoryTablePZT.COLUMN_CATEGORY + " TEXT, " +
+                CategoryTablePZT.COLUMN_DESCRIPTION + " TEXT" +
+                 ")";
+        db.execSQL(SQL_CREATE_CATEGORY_PZT_TABLE);
+        fillCategoryTablePZT();
+
+        final String SQL_CREATE_FEE_FOR_PZT_TABLE = "CREATE TABLE " +
+                CategoryTableFeeForPZT.TABLE_NAME  + " ( " +
+                CategoryTableFeeForPZT._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                CategoryTableFeeForPZT.COLUMN_AREA_ABOVE + " INT, " +
+                CategoryTableFeeForPZT.COLUMN_CATEGORY_1_FEE + " DOUBLE, " +
+                CategoryTableFeeForPZT.COLUMN_CATEGORY_2_FEE + " DOUBLE, " +
+                CategoryTableFeeForPZT.COLUMN_CATEGORY_3_FEE + " DOUBLE, " +
+                CategoryTableFeeForPZT.COLUMN_CATEGORY_4_FEE + " DOUBLE, " +
+                CategoryTableFeeForPZT.COLUMN_CATEGORY_5_FEE + " DOUBLE" +
+                ")";
+        db.execSQL(SQL_CREATE_FEE_FOR_PZT_TABLE);
+        fillCategoryFeeForPZT();
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+ IndicatorZTable.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+ CategoryTablePZT.TABLE_NAME);
         onCreate(db);
+
+
+//        db.execSQL("DROP TABLE IF EXISTS "+ Number2Table.TABLE_NAME);
+//        onCreate(db);
     }
+
+//    private void fillTable2() {
+//
+//        String[] person = new String[]{ "Za prace standardowo świadczone przez szefa biura \n" +
+//                        "architektonicznego lub wysoko kwalifikowanego projektanta",
+//                "Za prace, dla których świadczenia niezbędna jest wiedza zawodowa architekta –\n" +
+//                        "standardowo świadczone przez architekta prowadzącego projekt",
+//                "Za prace, dla których świadczenia niezbędna jest wiedza zawodowa architekta –\n" +
+//                        "standardowo świadczone przez architekta asystenta projektanta",
+//                "Za prace, dla których świadczenia niezbędne są kwalifikacje kreślarza lub innego\n"
+//        };
+//
+//        String[] min = new String[]{  "320","160", "120", "80"
+//        };
+//
+//        String[] max = new String[]{"600","300", "260", "200"
+//        };
+//
+//        for (int i = 0; i < max.length; i++) {
+//            Indicator q1 = new Indicator(person[i], min[i], max[i]);
+//            addIndicatorTable2(q1);
+//        }
+//    }
 
     private void fillIndicatorsTable() {
 
@@ -206,12 +256,108 @@ public class IndicatorDbHelper extends SQLiteOpenHelper {
         }
     }
 
+
+    private void fillCategoryTablePZT() {
+
+        String[] cat = new String[]{ "KATEGORIA 1", "KATEGORIA 2","KATEGORIA 3","KATEGORIA 4","KATEGORIA 5"
+        };
+
+
+        String[] desc = new String[]{  "- tereny o jednorodnej , nieskomplikowanej zabudowie, prostym zagospodarowaniu i uzbrojeniu\n" +
+                "(do 3 projektowanych sieci), bez urządzeń technologicznych i z ewentualnymi pojedynczymi\n" +
+                "urządzeniami technicznymi\n" +
+                "- tereny z układem komunikacji wewnętrznej - do 10% powierzchni opracowania\n" +
+                "- tereny z pojedynczym zakresem funkcyjnym\n" +
+                "- tereny z pozostawieniem w 90% istniejącego ukształtowania\n" +
+                "- tereny o prostych układach szaty roślinnej i jej jednorodnym składzie.",
+                "- tereny o niejednorodnej zabudowie, prostym zagospodarowaniu i uzbrojeniu ,\n" +
+                        "(do 4 projektowanych sieci), pojedynczymi urządzeniami technicznymi i technologicznymi\n" +
+                        "- tereny z układem komunikacji wewnętrznej – od 10% do15% powierzchni opracowania\n" +
+                        "- tereny – do 3 zakresów funkcyjnych\n" +
+                        "- tereny o prostej rzeźbie z niedużymi zmianami w stosunku do istniejącego ukształtowania\n" +
+                        "- tereny o prostych układach szaty roślinnej lecz jej niejednorodnym składzie.",
+                "- tereny:\n" +
+                        "a) o skomplikowanej i rozczłonkowanej zabudowie , oraz złożonych założeniach\n" +
+                        "przestrzenno-plastycznych, z niewielką ilością urządzeń technicznych ,\n" +
+                        "technologicznych i sieci uzbrojenia (do 5 projektowanych sieci), lub\n" +
+                        "b) o średnim stopniu trudności projektowanej zabudowy i założeń przestrzennych, lecz z\n" +
+                        "dużą ilością projektowanych urządzeń technicznych , technologicznych i sieci\n" +
+                        "uzbrojenia (powyżej 5 projektowanych sieci),\n" +
+                        "- tereny z układem komunikacji wewnętrznej – od 15% do 20% powierzchni opracowania\n" +
+                        "- tereny o licznych zakresach funkcyjnych o prostych związkach\n" +
+                        "- tereny o przeciętnym zakresie zmian ukształtowania\n" +
+                        "- tereny o złożonych układach kompozycyjnych szaty roślinnej i jej niejednorodnym składzie.",
+                "- tereny jak w Kategorii 3a, lecz z dużą ilością : sieci uzbrojenia ( powyżej 5 projektowanych\n" +
+                        "sieci), ciągów i urządzeń technologicznych, urządzeń technicznych oraz konstrukcji\n" +
+                        "inżynierskich .\n" +
+                        "- tereny z układem komunikacji wewnętrznej – powyżej 20% powierzchni opracowania\n" +
+                        "- tereny wielofunkcyjne o różnorakich powiązaniach\n" +
+                        "- tereny o bogatym projektowanym zróżnicowaniu z dużymi zmianami w stosunku do\n" +
+                        "istniejącego ukształtowania\n" +
+                        "- tereny o złożonych układach kompozycyjnych szaty roślinnej i jej niejednorodnym składzie.",
+
+
+                "- tereny jak w Kategorii 4. – dla najtrudniejszych zakładów produkcji podstawowej w\n" +
+                        "przemysłach: górniczym, hutniczym, chemicznym, energetycznym.\n" +
+                        "- tereny z układem komunikacji wewnętrznej – powyżej 20% powierzchni opracowania,\n" +
+                        "z torowiskami i urządzeniami torowymi."
+        };
+
+
+
+        for (int i = 0; i < cat.length; i++) {
+            Indicator q1 = new Indicator(cat[i], desc[i]);
+            addCategoryPZT(q1);
+        }
+    }
+
+
+    private void fillCategoryFeeForPZT() {
+
+        int[] areaAbove = new int[]{0,2,5,10,20,30,40,60,80,100,150,200,250,300,400,500
+        };
+        double[] cat1 = new double[]{6.60,5.80,5.05,4.35,3.70,3.10,2.60,2.15,1.75,1.40,1.15,0.95,0.80,0.70,0.62,0.57
+        };
+        double[] cat2 = new double[]{7.13,6.26,5.45,4.70,3.99,3.35,2.81,2.32,1.89,1.51,1.24,1.03,0.86,0.76,0.67,0.62
+        };
+        double[] cat3 = new double[]{8.20,7.20,6.27,5.40,4.60,3.85,3.23,2.67,2.17,1.74,1.43,1.18,1.00,0.88,0.77,0.72
+        };
+        double[] cat4 = new double[]{0,8.79,7.65,6.59,5.61,4.70,3.94,3.26,2.65,2.12,1.74,1.44,1.22,1.07,0.94,0.88
+        };
+        double[] cat5 = new double[]{0,11.43,9.94,8.57,7.29,6.11,5.12,4.24,3.44,2.76,2.26,1.87,1.58,1.39,1.22,1.15
+        };
+
+
+
+
+
+        for (int i = 0; i < cat1.length; i++) {
+            Indicator q1 = new Indicator(areaAbove[i], cat1[i],cat2[i],cat3[i],cat4[i],cat5[i]);
+            addFeePZT(q1);
+        }
+    }
+    private void addCategoryPZT(Indicator indicator) {
+        ContentValues cv = new ContentValues();
+        cv.put(CategoryTablePZT.COLUMN_CATEGORY, indicator.getCategoryCategory());
+        cv.put(CategoryTablePZT.COLUMN_DESCRIPTION, indicator.getCategoryDescription());
+        db.insert(CategoryTablePZT.TABLE_NAME, null, cv);
+    }
     private void addIndicator(Indicator indicator) {
         ContentValues cv = new ContentValues();
         cv.put(IndicatorZTable.COLUMN_FUNCTIONAL_GROUPS, indicator.getIndicatorObjectsGroups());
         cv.put(IndicatorZTable.COLUMN_OBJECTS, indicator.getIndicatorObjects());
         cv.put(IndicatorZTable.COLUMN_CATEGORY, indicator.getIndicatorCategory());
         db.insert(IndicatorZTable.TABLE_NAME, null, cv);
+    }
+    private void addFeePZT(Indicator indicator) {
+        ContentValues cv = new ContentValues();
+        cv.put(CategoryTableFeeForPZT.COLUMN_AREA_ABOVE, indicator.getFeeForPZTAbove());
+        cv.put(CategoryTableFeeForPZT.COLUMN_CATEGORY_1_FEE, indicator.getFeeForPZTCategory1());
+        cv.put(CategoryTableFeeForPZT.COLUMN_CATEGORY_2_FEE, indicator.getFeeForPZTCategory2());
+        cv.put(CategoryTableFeeForPZT.COLUMN_CATEGORY_3_FEE, indicator.getFeeForPZTCategory3());
+        cv.put(CategoryTableFeeForPZT.COLUMN_CATEGORY_4_FEE, indicator.getFeeForPZTCategory4());
+        cv.put(CategoryTableFeeForPZT.COLUMN_CATEGORY_5_FEE, indicator.getFeeForPZTCategory5());
+        db.insert(CategoryTableFeeForPZT.TABLE_NAME, null, cv);
     }
 
     public List<Indicator> getAllIndicators() {
@@ -231,6 +377,26 @@ public class IndicatorDbHelper extends SQLiteOpenHelper {
         Cursor c = db.rawQuery("SELECT * FROM " + IndicatorZTable.TABLE_NAME +
                 " WHERE " + IndicatorZTable.COLUMN_FUNCTIONAL_GROUPS + " = '" + groupObjects +"'", null);
         movingToFirst(indicatorList, c);
+
+        c.close();
+        return indicatorList;
+    }
+
+    public List<Indicator> getCategoryPZT() {
+        List<Indicator> indicatorList = new ArrayList<>();
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM " + CategoryTablePZT.TABLE_NAME, null);
+        movingToFirstPZT(indicatorList, c);
+
+        c.close();
+        return indicatorList;
+    }
+
+    public List<Indicator> getFeePZT() {
+        List<Indicator> indicatorList = new ArrayList<>();
+        db = getReadableDatabase();
+        Cursor c = db.rawQuery("SELECT * FROM " + CategoryTableFeeForPZT.TABLE_NAME, null);
+        movingToFirstFeeForPZT(indicatorList, c);
 
         c.close();
         return indicatorList;
@@ -269,6 +435,31 @@ public class IndicatorDbHelper extends SQLiteOpenHelper {
                 indicator.setIndicatorObjectsGroups(c.getString(c.getColumnIndex(IndicatorZTable.COLUMN_FUNCTIONAL_GROUPS)));
                 indicator.setIndicatorObjects(c.getString(c.getColumnIndex(IndicatorZTable.COLUMN_OBJECTS)));
                 indicator.setIndicatorCategory(c.getInt(c.getColumnIndex(IndicatorZTable.COLUMN_CATEGORY)));
+                indicatorList.add(indicator);
+            } while (c.moveToNext());
+        }
+    }
+    public void movingToFirstPZT(List indicatorList, Cursor c) {
+        if (c.moveToFirst()) {
+            do {
+                Indicator indicator = new Indicator();
+                indicator.setCategoryCategory(c.getString(c.getColumnIndex(CategoryTablePZT.COLUMN_CATEGORY)));
+                indicator.setCategoryDescription(c.getString(c.getColumnIndex(CategoryTablePZT.COLUMN_DESCRIPTION)));
+
+                indicatorList.add(indicator);
+            } while (c.moveToNext());
+        }
+    }
+    public void movingToFirstFeeForPZT(List indicatorList, Cursor c) {
+        if (c.moveToFirst()) {
+            do {
+                Indicator indicator = new Indicator();
+                indicator.setFeeForPZTAbove(c.getInt(c.getColumnIndex(CategoryTableFeeForPZT.COLUMN_AREA_ABOVE)));
+                indicator.setFeeForPZTCategory1(c.getDouble(c.getColumnIndex(CategoryTableFeeForPZT.COLUMN_CATEGORY_1_FEE)));
+                indicator.setFeeForPZTCategory2(c.getDouble(c.getColumnIndex(CategoryTableFeeForPZT.COLUMN_CATEGORY_2_FEE)));
+                indicator.setFeeForPZTCategory3(c.getDouble(c.getColumnIndex(CategoryTableFeeForPZT.COLUMN_CATEGORY_3_FEE)));
+                indicator.setFeeForPZTCategory4(c.getDouble(c.getColumnIndex(CategoryTableFeeForPZT.COLUMN_CATEGORY_4_FEE)));
+                indicator.setFeeForPZTCategory5(c.getDouble(c.getColumnIndex(CategoryTableFeeForPZT.COLUMN_CATEGORY_5_FEE)));
                 indicatorList.add(indicator);
             } while (c.moveToNext());
         }

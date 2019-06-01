@@ -5,11 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 public class EstimatedInvestmentCostActivity extends AppCompatActivity {
 
+    EditText editZ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +55,16 @@ public class EstimatedInvestmentCostActivity extends AppCompatActivity {
     private void startZ(){
        Intent intent = new Intent(EstimatedInvestmentCostActivity.this, IndicatorZActivity.class);
        startActivity(intent);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        editZ = findViewById(R.id.editZ);
+        editZ.setText(Double.toString(Indicator.valueKat));
+        Log.i("safsf", Double.toString(Indicator.valueKat));
+
 
     }
 }

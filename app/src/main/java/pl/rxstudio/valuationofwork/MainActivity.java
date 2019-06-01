@@ -70,7 +70,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void startPZT(View view){
+        Intent intent = new Intent(MainActivity.this, CostPZTActivity.class);
+        startActivity(intent);
 
+    }
 
 
 }

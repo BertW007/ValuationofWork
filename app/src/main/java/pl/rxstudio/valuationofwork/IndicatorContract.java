@@ -13,48 +13,35 @@ public final class IndicatorContract {
         public static final String COLUMN_OBJECTS = "objects";
         public static final String COLUMN_CATEGORY = "category";
     }
-    public class IndicatorZValue {
-        public String indicatorZ = "0";
 
+//    public static class Number2Table implements BaseColumns {
+//        public static final String TABLE_NAME = "table2";
+//        public static final String COLUMN_WORK_PERSON = "osobaPracująca";
+//        public static final String COLUMN_HOURLY_RATE_MIN = "stawkaGodzinowaMin";
+//        public static final String COLUMN_HOURLY_RATE_MAX = "stawkaGodzinowaMax";
+//    }
+
+    public static class CategoryTablePZT implements BaseColumns {
+        public static final String TABLE_NAME = "categoryTablePZT";
+        public static final String COLUMN_CATEGORY = "kategoria";
+        public static final String COLUMN_DESCRIPTION = "opis";
     }
 
+    public static class CategoryTableFeeForPZT implements BaseColumns {
+        public static final String TABLE_NAME = "categoryTableFeeForPZT";
+        public static final String COLUMN_AREA_ABOVE = "areaAbove";
 
-    static String[] wybKatTyp = {"dalne",
-            "Bdra",
-            "Adminisda i łączność",
-            "Stradlicja, więzienia",
-            "Handdsługi",
-            "Ośwda",
-            "Ndka",
-            "Zdda społeczna",
-            "Kudra",
-            "Obiektydtu religijnego",
-            "Sport i rekreacja",
-            "Hotele i turystyka",
-            "Rolnicze",
-            "Komunikacja",
-            "Przemysł i magazyny",
-            "Militarne i obrony cywilnej",
-            "Inne"
-    };
+        public static final String COLUMN_CATEGORY_1_FEE = "category1Fee";
+        public static final String COLUMN_CATEGORY_2_FEE = "category2Fee";
+        public static final String COLUMN_CATEGORY_3_FEE = "category3Fee";
+        public static final String COLUMN_CATEGORY_4_FEE = "category4Fee";
+        public static final String COLUMN_CATEGORY_5_FEE = "category5Fee";
+    }
 
-    static String[] wybKatTyp2 = {"Mieszkalne",
-            "Biura",
-            "Administracja i łączność",
-            "Straż, policja, więzienia",
-            "Handel i usługi",
-            "Oświata",
-            "Nauka",
-            "Zdrowie i opieka społeczna",
-            "Kultura",
-            "Obiekty kultu religijnego",
-            "Sport i rekreacja",
-            "Hotele i turystyka",
-            "Rolnicze",
-            "Komunikacja",
-            "Przemysł i magazyny",
-            "Militarne i obrony cywilnej",
-            "Inne"
-    };
+//    public class IndicatorZValue {
+//        public String indicatorZ = "0";
+//
+//    }
+
 
 }
